@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ninja_product_categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -23,10 +22,7 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {   
-        Schema::table('ninja_product_categories', function(Blueprint $table){
-           $table->dropSoftDeletes();
-        });
-        Schema::dropIfExists('ninja_product_categories');
+    {
+        Schema::dropIfExists('categories');
     }
 };
