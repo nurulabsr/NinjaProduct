@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NinjaProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* 
- 
 
-
-*/
+Route::resource('product', NinjaProductController::class);
