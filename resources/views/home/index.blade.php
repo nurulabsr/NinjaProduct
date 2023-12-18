@@ -177,13 +177,19 @@
         <li>
             <a class="nav-link" href="#">Features</a>
         </li>
-        <li>
+        <li> 
             <a class="nav-link" href="#">Pricing</a>
         </li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
     </ul>
   </nav>
-  
+
+  {{-- default section--}}
+
+  @yield('ninja_default_section')
+      
+  {{-- end default section --}}
+
   <!-- Bootstrap JS script -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
