@@ -43,7 +43,7 @@ class NinjaProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('Form.Product.update');
     }
 
     /**
