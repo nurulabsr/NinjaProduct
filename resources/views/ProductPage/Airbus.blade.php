@@ -1,4 +1,4 @@
-@extends('home.index')
+{{-- @extends('home.index')
 @section('ninja_default_section_1')
 <div class="container">
     <div class="row">
@@ -21,4 +21,4 @@
         ?>
     </div>
 </div>
-@endsection
+@endsection --}}

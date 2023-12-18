@@ -186,7 +186,9 @@
 
   {{-- default section--}}
 
-  @yield('ninja_default_section')
+     <div class="container mt-5">
+      @yield('ninja_default_section')
+     </div>
       
   {{-- end default section --}}
 
