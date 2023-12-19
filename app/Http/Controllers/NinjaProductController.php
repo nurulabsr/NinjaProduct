@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Product;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request, App\Models\Product, Illuminate\Support\Str;
 
 class NinjaProductController extends Controller
 {
@@ -31,7 +29,7 @@ class NinjaProductController extends Controller
         $product = New Product();
         
         $request->validate([  //'regex:/^[a-zA-Z0-9$]+$/', 'regex:/^[a-zA-Z]+$/' , for image 'dimensions:max_width=1920,max_height=1080', 
-            
+
             'ninja_thumnail_image' => ['required', 'max:2048', 'file', 'image', 'mimes:png,jpg', 'mimetypes:image/jpg,image/png', 'regex:/^(.*)(\.jpg|\.png)$/i'],
             'carousel_image_1' => ['required', 'max:2048', 'file', 'image', 'mimes:png,jpg', 'mimetypes:image/jpg,image/png', 'regex:/^(.*)(\.jpg|\.png)$/i'],
             'carousel_image_2' => ['required', 'max:2048', 'file', 'image', 'mimes:png,jpg', 'mimetypes:image/jpg,image/png', 'regex:/^(.*)(\.jpg|\.png)$/i'],
@@ -42,6 +40,11 @@ class NinjaProductController extends Controller
             'ninja_product_price' => ['required', 'numeric', 'between:1, 9'],
             'ninja_product_shiping_price' => ['required', 'numeric', 'between:1, 9']
         ]);
+        
+        // $imageFile = time() .'_'. Str::slug($request->ninja_thumnail_image->getClientOriginalName());
+        $imageFile = Str::uuid() . '_' . Str::slug($request->ninja_thumnail_image->getClientOriginalName());
+        $cleanFileNameWithExtension = $imageFile . '.' . $request->image->getClientOriginalExtension();
+
         $product->thumnail_image   =   $request->ninja_thumnail_image;
         $product->product_image_1  =   $request->carousel_image_1;
         $product->product_image_2  =   $request->carousel_image_2;
