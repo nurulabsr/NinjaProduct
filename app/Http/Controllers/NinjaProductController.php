@@ -45,7 +45,7 @@ class NinjaProductController extends Controller
 
         $thumnailImageFile = Str::uuid() . '_' . Str::slug($request->ninja_thumnail_image->getClientOriginalName());
         $cleanFileNameWithExtension = $thumnailImageFile . '.' . $request->image->getClientOriginalExtension();
-        $filePath = $request->image->storeAs('ThumnailDirectory', $cleanFileNameWithExtension);
+        $ThumnailImageFilePath = $request->image->storeAs('ThumnailDirectory', $cleanFileNameWithExtension);
 
         $carouselimageOneFile   = Str::uuid() . '_' . Str::slug($request->carousel_image_1->getClientOriginalName());     ///IF I FOR LOOP it will more clear and code readability maybe
         $carouselimageTwoFile   = Str::uuid() . '_' . Str::slug($request->carousel_image_2->getClientOriginalName());
@@ -56,19 +56,20 @@ class NinjaProductController extends Controller
         $carouselimageTwoFileWithExtention   =  $carouselimageTwoFile . '.' . $request->carousel_image_2->getClientOriginalExtension();
         $carouselimageThreeFileWithExtention =  $carouselimageThreeFile . '.' . $request->carousel_image_3->getClientOriginalExtension();
 
-        $carouselimageOneFilePath = $request->image->storeAs('ThumnailImageOne', $cleanFileNameWithExtension);
-        $carouselimageTwoFilePath = $request->image->storeAs('ThumnailImageTwo', $cleanFileNameWithExtension);
-        $carouselimageThreeFilePath = $request->image->storeAs('ThumnailImageThree', $cleanFileNameWithExtension);
+        $carouselimageOneFilePath = $request->image->storeAs('ThumnailImageOne', $carouselimageOneFileWithExtention);
+        $carouselimageTwoFilePath = $request->image->storeAs('ThumnailImageTwo', $carouselimageTwoFileWithExtention);
+        $carouselimageThreeFilePath = $request->image->storeAs('ThumnailImageThree', $carouselimageThreeFileWithExtention);
 
-        $product->thumnail_image   =   $request->ninja_thumnail_image;
-        $product->product_image_1  =   $request->carousel_image_1;
-        $product->product_image_2  =   $request->carousel_image_2;
-        $product->product_image_3  =   $request->carousel_image_3;
+        $product->thumnail_image   =  'storage/'.$ThumnailImageFilePath;
+        $product->product_image_1  =  'storage/'.$carouselimageOneFilePath;
+        $product->product_image_2  =  'storage/'.$carouselimageTwoFilePath;
+        $product->product_image_3  =  'storage/'.$carouselimageThreeFilePath;
         $product->product_title    =   $request->ninja_product_title;
         $product->product_detail   =   $request->ninja_product_detail;
         $product->shiping_detail   =   $request->ninja_product_shiping_detail;
         $product->product_price    =   $request->ninja_product_price;
         $product->shiping_cost     =   $request->ninja_product_shiping_price;
+        $product->save();
 
     }
 
