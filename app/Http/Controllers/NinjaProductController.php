@@ -47,7 +47,7 @@ class NinjaProductController extends Controller
         $cleanFileNameWithExtension = $thumnailImageFile . '.' . $request->image->getClientOriginalExtension();
         $filePath = $request->image->storeAs('ThumnailDirectory', $cleanFileNameWithExtension);
 
-        $carouselimageOneFile   = Str::uuid() . '_' . Str::slug($request->carousel_image_1->getClientOriginalName());
+        $carouselimageOneFile   = Str::uuid() . '_' . Str::slug($request->carousel_image_1->getClientOriginalName());     ///IF I FOR LOOP it will more clear and code readability maybe
         $carouselimageTwoFile   = Str::uuid() . '_' . Str::slug($request->carousel_image_2->getClientOriginalName());
         $carouselimageThreeFile = Str::uuid() . '_' . Str::slug($request->carousel_image_3->getClientOriginalName()); 
 
@@ -56,6 +56,9 @@ class NinjaProductController extends Controller
         $carouselimageTwoFileWithExtention   =  $carouselimageTwoFile . '.' . $request->carousel_image_2->getClientOriginalExtension();
         $carouselimageThreeFileWithExtention =  $carouselimageThreeFile . '.' . $request->carousel_image_3->getClientOriginalExtension();
 
+        $carouselimageOneFilePath = $request->image->storeAs('ThumnailImageOne', $cleanFileNameWithExtension);
+        $carouselimageTwoFilePath = $request->image->storeAs('ThumnailImageTwo', $cleanFileNameWithExtension);
+        $carouselimageThreeFilePath = $request->image->storeAs('ThumnailImageThree', $cleanFileNameWithExtension);
 
         $product->thumnail_image   =   $request->ninja_thumnail_image;
         $product->product_image_1  =   $request->carousel_image_1;
