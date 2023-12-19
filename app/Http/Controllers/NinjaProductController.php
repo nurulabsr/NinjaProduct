@@ -42,9 +42,15 @@ class NinjaProductController extends Controller
         ]);
         
         // $imageFile = time() .'_'. Str::slug($request->ninja_thumnail_image->getClientOriginalName());
-        $imageFile = Str::uuid() . '_' . Str::slug($request->ninja_thumnail_image->getClientOriginalName());
-        $cleanFileNameWithExtension = $imageFile . '.' . $request->image->getClientOriginalExtension();
 
+        $thumnailImageFile = Str::uuid() . '_' . Str::slug($request->ninja_thumnail_image->getClientOriginalName());
+        $cleanFileNameWithExtension = $thumnailImageFile . '.' . $request->image->getClientOriginalExtension();
+        $filePath = $request->image->storeAs('ThumnailDirectory', $cleanFileNameWithExtension);
+
+        $carouselimageOneFile   = Str::uuid() . '_' . Str::slug($request->carousel_image_1->getClientOriginalName());
+        $carouselimageTwoFile   = Str::uuid() . '_' . Str::slug($request->carousel_image_2->getClientOriginalName());
+        $carouselimageThreeFile = Str::uuid() . '_' . Str::slug($request->carousel_image_2->getClientOriginalName()); 
+        
         $product->thumnail_image   =   $request->ninja_thumnail_image;
         $product->product_image_1  =   $request->carousel_image_1;
         $product->product_image_2  =   $request->carousel_image_2;
