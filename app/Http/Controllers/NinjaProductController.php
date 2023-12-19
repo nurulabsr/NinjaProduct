@@ -49,8 +49,14 @@ class NinjaProductController extends Controller
 
         $carouselimageOneFile   = Str::uuid() . '_' . Str::slug($request->carousel_image_1->getClientOriginalName());
         $carouselimageTwoFile   = Str::uuid() . '_' . Str::slug($request->carousel_image_2->getClientOriginalName());
-        $carouselimageThreeFile = Str::uuid() . '_' . Str::slug($request->carousel_image_2->getClientOriginalName()); 
-        
+        $carouselimageThreeFile = Str::uuid() . '_' . Str::slug($request->carousel_image_3->getClientOriginalName()); 
+
+
+        $carouselimageOneFileWithExtention   =  $carouselimageOneFile . '.' . $request->carousel_image_1->getClientOriginalExtension();
+        $carouselimageTwoFileWithExtention   =  $carouselimageTwoFile . '.' . $request->carousel_image_2->getClientOriginalExtension();
+        $carouselimageThreeFileWithExtention =  $carouselimageThreeFile . '.' . $request->carousel_image_3->getClientOriginalExtension();
+
+
         $product->thumnail_image   =   $request->ninja_thumnail_image;
         $product->product_image_1  =   $request->carousel_image_1;
         $product->product_image_2  =   $request->carousel_image_2;
