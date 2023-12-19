@@ -18,7 +18,7 @@
         </div>
         <div class="card-body">
             <form action="" method="POST" enctype="multipart/form-data">
-
+                @csrf
                 {{-- image --}}
                 <div class="form-group">
                     <label for="" class="form-lavel">Thumnail Image</label>

@@ -12,11 +12,56 @@
 
   <style>
     /* General styling for the page */
+
     html, body {
       margin: 0;
       height: 100%;
     }
     
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(45deg, #00ffcc, #ffcc00);
+      color: #fff;
+      z-index: 1;
+    }
+
+    /* Add the animated border */
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      box-sizing: border-box;
+      animation: pulse 2s infinite;
+    }
+
+    /* Define the pulse animation */
+    @keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 0 20px rgba(0, 255, 204, 0);
+      }
+      100% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 0 rgba(0, 255, 204, 0);
+      }
+    }
+
+
+
     /* Global styling for all elements using the Raleway font */
     * {
       font-family: "Raleway";
