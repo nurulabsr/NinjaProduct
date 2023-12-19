@@ -29,7 +29,14 @@ class NinjaProductController extends Controller
     public function store(Request $request)
     {
         $product = New Product();
-
+        
+        $request->validate([  //'regex:/^[a-zA-Z0-9$]+$/', 'regex:/^[a-zA-Z]+$/'
+            'ninja_product_title' => ['required', 'string', 'max:250', 'min:10', 'alpha', 'regex:/^[a-zA-Z1-9]+$/'],
+            'ninja_product_detail' => ['required', 'string', 'max:50000', 'min:500', 'regex:/^[a-zA-Z0-9$]+$/|string'],
+            'ninja_product_shiping_detail' => ['required', 'string', 'max:50000', 'min:500', 'regex:/^[a-zA-Z0-9$]+$/|string'],
+            'ninja_product_price' => [],
+            'ninja_product_shiping_price' => []
+        ]);
         $product->thumnail_image   =   $request->ninja_thumnail_image;
         $product->product_image_1  =   $request->carousel_image_1;
         $product->product_image_2  =   $request->carousel_image_2;
